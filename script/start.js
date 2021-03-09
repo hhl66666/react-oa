@@ -9,6 +9,8 @@ const app = express();
 const compiler = webpack(webpackConfig)
 
 app.use(webpackDevMiddleware(compiler))
-app.use(webpackHotMiddleware(compiler))
+app.use(webpackHotMiddleware(compiler,{
+    path:'/__webpack_hmr'
+}))
 
 app.listen(3000)

@@ -1,14 +1,15 @@
 import _ from 'lodash';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './app.jsx'
 import './common.css';
 
-function component() {
-    var element = document.createElement('div');
 
-    // lodash 是由当前 script 脚本 import 导入进来的
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-    element.classList.add('hello');
+ReactDOM.render(
+    <App></App>,
+    document.getElementById('app')
+)
 
-    return element;
+if(module.hot){
+    module.hot.accept()
 }
-
-document.body.appendChild(component());

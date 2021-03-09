@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['./src/index.js', 'webpack-hot-middleware/client.js'],
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
@@ -40,12 +41,22 @@ module.exports = {
         use: [
           'xml-loader'
         ]
+      },
+      {
+        test:/(\.(jsx|js))$/,
+        loader: 'babel-loader',
+        include:path.resolve(__dirname,'./src')
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: '管理输出'
-    })
+      title: '管理输出',
+      filename:'index.html',
+      template:path.join(__dirname,'index.html')
+    }),
+    
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
   ],
 };
