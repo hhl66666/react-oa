@@ -8,6 +8,7 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
   },
+  mode:process.env.NODE_ENV == "production" ? 'production' : false,
   devtool: 'source-map',
   module: {
     rules: [
@@ -44,9 +45,9 @@ module.exports = {
       },
       {
         test:/(\.(jsx|js))$/,
-        loader: 'babel-loader',
+        use: ['babel-loader?cacheDirectory=true'],
         include:path.resolve(__dirname,'./src')
-      }
+      },
     ]
   },
   plugins: [
@@ -55,8 +56,9 @@ module.exports = {
       filename:'index.html',
       template:path.join(__dirname,'index.html')
     }),
-    
-    new webpack.HotModuleReplacementPlugin(),
+  
     new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
   ],
+  performance: { hints: false }
 };
