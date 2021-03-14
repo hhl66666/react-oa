@@ -3,7 +3,9 @@ import { HashRouter, Route, Switch } from 'react-router-dom'
 import Login from './views/login/index.jsx'
 export default class App extends Component {
     constructor(props) {
+        
         super(props)
+
     }
 
     render() {

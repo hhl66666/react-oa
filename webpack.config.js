@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -59,6 +60,11 @@ module.exports = {
   
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('./dll/vandor-manifest.json')
+    }),
+      
   ],
   performance: { hints: false }
 };

@@ -52,7 +52,7 @@ class Login extends Component {
                                 <a className="login-form-forgot" href="">
                                 忘记密码
               </a><br></br>
-                                <Button className="login-btn" type="primary" htmlType="submit" className="login-form-button">
+                                <Button  type="primary" htmlType="submit" className="login-form-button login-btn">
                                   登录
               </Button>
               <br></br>

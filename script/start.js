@@ -12,5 +12,5 @@ app.use(webpackDevMiddleware(compiler))
 app.use(webpackHotMiddleware(compiler,{
     path:'/__webpack_hmr'
 }))
-
+app.use(express.static('./'))
 app.listen(3000)
