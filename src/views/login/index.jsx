@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Tabs } from 'antd';
 import './style.css'
+
+const { TabPane } = Tabs;
+
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -16,7 +19,6 @@ class Login extends Component {
     };
 
     render() {
-        const { getFieldDecorator } = this.props.form;
         return (
             <div className="login_background">
                 <div className="positon-right-c">
@@ -62,12 +64,14 @@ class Login extends Component {
 
                     </Form>
                 </div>
-
+                <div>
+                    home
+                </div>
             </div>
 
         );
     }
 }
 
-Login = Form.create({ name: 'normal_login' })(Login)
+// Login = Form.create({ name: 'normal_login' })(Login)
 export default Login
